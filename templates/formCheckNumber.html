@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>form-upload</title>
+
+            <style>
+                body {
+                    text-align: center;
+                }
+                main {
+                    display: inline-block;
+                }
+                .result {
+                    width: 400px;
+                    margin-bottom: 50px;
+                }
+                form {
+                    width: 200px;
+                    margin: 0 auto;
+                    text-align: left;
+                }
+                .input-submit {
+                    margin-top: 25px;
+                }
+            </style>
+        </head>
+        <body>
+            <main>
+                {% if number %}
+                <div class="result">
+                    <h2>Result</h2>
+                    <p>You have requested the evaluation of the number: <strong>{{ number }}</strong></p>
+                    <p>The result is:</p>
+                    <p> <strong>{{ response }}</strong> </p>
+                </div>
+                {% endif %}
+                <div>
+                    <h1>Check a{% if number %} new {% endif %} number</h1>
+                    <form method='post'>
+                        <div class="form-group">
+                            <input type="number" id="input-number" name="number" min="1">
+                        </div>
+                        <input type="submit" value="Check number" class="input-submit">
+                    </form>
+                </div>
+            </main>
+        </body>
+    </html>
