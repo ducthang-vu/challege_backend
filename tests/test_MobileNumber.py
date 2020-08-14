@@ -1,22 +1,29 @@
 # Unittest for class: MobileNumber
 
 import unittest
+from mock import patch
 from challenge_backend.MobileNumber import MobileNumber, NonCorrectableError, CorrectableError
 
 
 class MobileNumberTestCase(unittest.TestCase):
+    @patch('challenge_backend.MobileNumber.MobileNumber.confirm_number')
+    def test_confirm_number_is_called(self, confirm_number_mock):
+        """Testing that method confirm_number is called by constructor"""
+        MobileNumber('ID', '27345678901')
+        assert confirm_number_mock.call_count == 1
+
     def test_confirm_number_set_return_true(self):
-        """Testing that method evaluate_number returns True when number is correct"""
+        """Testing that method confirm_number returns True when number is correct"""
         record = MobileNumber('ID', '27345678901')
         self.assertEqual(record.confirm_number(), True)
 
     def test_confirm_number_set_status_accepted(self):
-        """Testing that method evaluate_number modifies the instance "status" attribute when number is correct"""
+        """Testing that method confirm_number modifies the instance "status" attribute when number is correct"""
         record = MobileNumber('ID', '27345678901')
         self.assertEqual(record.status, 'accepted')
 
     def test_confirm_number_not_correctable_numbers(self):
-        """Testing that method evaluate_number raises the NonCorrectableError error"""
+        """Testing that method confirm_number raises the NonCorrectableError error"""
         numbers = '273456789012', '123456789012', '27345678', '12345678', '27345abc901', '12345678', '1234567890', \
                   '12345678901 '
         for n in numbers:
@@ -25,12 +32,18 @@ class MobileNumberTestCase(unittest.TestCase):
                 self.assertRaises(NonCorrectableError, record.confirm_number)
 
     def test_confirm_number_correctable_numbers(self):
-        """Testing that method evaluate_number raises the CorrectableError error"""
+        """Testing that method confirm_number raises the CorrectableError error"""
         numbers = '123456789', '7234567890'
         for n in numbers:
             with self.subTest(msg=n):
                 record = MobileNumber('ID', n)
                 self.assertRaises(CorrectableError, record.confirm_number)
+
+    @patch('challenge_backend.MobileNumber.MobileNumber.catch_correctable_error')
+    def test_catch_correctable_error_is_called(self, catch_correctable_error_mock):
+        """Testing that method catch_correctable_error is called"""
+        MobileNumber(None, '7345678901')
+        assert catch_correctable_error_mock.call_count == 1
 
     def test_catch_correctable_error_set_status(self):
         """Testing that the catch_correctable_error method set instance attribute "status" into "corrected"""
@@ -46,6 +59,12 @@ class MobileNumberTestCase(unittest.TestCase):
         assert record.annotation != 'Correction: missing 27 prefix'
         record.catch_correctable_error()
         self.assertEqual(record.annotation, 'Correction: missing 27 prefix')
+
+    @patch('challenge_backend.MobileNumber.MobileNumber.catch_non_correctable_error')
+    def test_catch_correctable_error_is_called(self, catch_non_correctable_error_mock):
+        """Testing that method catch_non_correctable_error is called"""
+        MobileNumber(None, '45678901')
+        assert catch_non_correctable_error_mock.call_count == 1
 
     def test_catch_non_correctable_error_set_status(self):
         """Testing that the catch_non_correctable_error method set instance attribute "rejected" into "corrected"""

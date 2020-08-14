@@ -28,7 +28,7 @@ class MobileNumber:
             self.catch_non_correctable_error()
 
     def confirm_number(self):
-        """Return True is number is correct, else raise exception"""
+        """Return True if number is correct, else raise exception"""
         if re.match(r'^27\d{9}$', self.number):
             return True
         if re.match(r'^7?\d{9}$', self.number):

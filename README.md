@@ -47,7 +47,7 @@ number, the application will confirm if the number is corrected, or not. If not 
 the reasons for which the number is not correct, and the possible correction.
 
 The user may upload a csv file with a POST request to the endpoint '*/upload-file*' (parameter: file). The response shall 
-be a json file, dividing the numbers in three categories: '**accepted**', '**corrected**', '**rejected**'.
+be a json, dividing the numbers in three categories: '**accepted**', '**corrected**', '**rejected**'.
 
 Example of **accepted** number:
 ```
