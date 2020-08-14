@@ -1,79 +1,78 @@
 <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <title>form-check-number</title>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>form-check-number</title>
+        <style>
+            body {
+                text-align: center;
+            }
+            main {
+                display: inline-block;
+            }
+            .result {
+                opacity: 1;
+                width: 400px;
+                margin-bottom: 50px;
+                animation: fadeIn 1s
+            }
 
-            <style>
-                body {
-                    text-align: center;
-                }
-                main {
-                    display: inline-block;
-                }
-                .result {
-                    opacity: 1;
-                    width: 400px;
-                    margin-bottom: 50px;
-                    animation: fadeIn 1s
-                }
+            @keyframes fadeIn {
+              from {opacity: 0;}
+              to {opacity: 1;}
+            }
 
-                @keyframes fadeIn {
-                  from {opacity: 0;}
-                  to {opacity: 1;}
-                }
-
-                form {
-                    width: 200px;
-                    margin: 0 auto;
-                    text-align: left;
-                }
-                .input-submit {
-                    margin-top: 25px;
-                }
-                .instructions {
-                    text-align: left;
-                    margin-top: 25px;
-                    font-size: 90%;
-                    width: 300px;
-                }
-            </style>
-        </head>
-        <body>
-            <main>
-                {% if number %}
-                <div class="result">
-                    <h2 class="result__title">Result</h2>
-                    <p>You have requested the evaluation of the number: <strong>{{ number }}</strong></p>
-                    <p>The result is:</p>
-                    <p> <strong>{{ response }}</strong> </p>
-                </div>
-                {% endif %}
-                <div>
-                    <h1>Check a{% if number %} new {% endif %} number</h1>
-                    <form method='post'>
-                        <div class="form-group">
-                            <input type="number" id="input-number" name="number" min="1" required>
-                        </div>
-                        <input type="submit" value="Check number" class="input-submit">
-                    </form>
-                </div>
-                <div class="instructions">
-                    <h3>Rules</h3>
-                    <p>A valid number:</p>
-                    <ul>
-                        <li>
-                            contain 11 digits; and
-                        </li>
-                        <li>
-                            must begin with 27.
-                        </li>
-                     </ul>
-                    <p>
-                        If a number contains 10 or 9 digits, the application will try to suggest a correction by adding the prefix 27, e.g.
-                        <strong>7</strong>234567890 --> <strong>27</strong>345678901.
-                    </p>
-                </div>
-            </main>
-        </body>
-    </html>
+            form {
+                width: 200px;
+                margin: 0 auto;
+                text-align: left;
+            }
+            .input-submit {
+                margin-top: 25px;
+            }
+            .instructions {
+                text-align: left;
+                margin-top: 25px;
+                font-size: 90%;
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            {% if number %}
+            <div class="result">
+                <h2 class="result__title">Result</h2>
+                <p>You have requested the evaluation of the number: <strong>{{ number }}</strong></p>
+                <p>The result is:</p>
+                <p> <strong>{{ response }}</strong> </p>
+            </div>
+            {% endif %}
+            <div>
+                <h1>Check a{% if number %} new {% endif %} number</h1>
+                <form method='post'>
+                    <div class="form-group">
+                        <input type="number" id="input-number" name="number" min="1" required>
+                    </div>
+                    <input type="submit" value="Check number" class="input-submit">
+                </form>
+            </div>
+            <div class="instructions">
+                <h3>Rules</h3>
+                <p>A valid number:</p>
+                <ul>
+                    <li>
+                        contain 11 digits; and
+                    </li>
+                    <li>
+                        must begin with 27.
+                    </li>
+                 </ul>
+                <p>
+                    If a number contains 10 or 9 digits, the application will try to suggest a correction by adding the prefix 27, e.g.
+                    <strong>7</strong>234567890 --> <strong>27</strong>345678901.
+                </p>
+            </div>
+        </main>
+    </body>
+</html>
