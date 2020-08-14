@@ -38,10 +38,9 @@ async def create_upload_file(file: UploadFile = File(...)):
     dataframe = pd.concat(chunks)
     data_dict = {}
     storage = TemporaryFile('w+t')
-    for _, row in dataframe.iterrows():
+    for row in dataframe.itertuples():
         try:
-            record = MobileNumber(row['id'], row['sms_phone'])
-            print(str(row['sms_phone']))
+            record = MobileNumber(row.id, row.sms_phone)
         except KeyError:
             raise HTTPException(status_code=422, detail="File must have column lines: 'id' and 'sms_phone")
         storage.write(str(record))
