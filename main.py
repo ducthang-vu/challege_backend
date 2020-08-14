@@ -41,7 +41,7 @@ async def create_upload_file(file: UploadFile = File(...)):
     for row in dataframe.itertuples():
         try:
             record = MobileNumber(row.id, row.sms_phone)
-        except KeyError:
+        except AttributeError:
             raise HTTPException(status_code=422, detail="File must have column lines: 'id' and 'sms_phone")
         storage.write(str(record))
         data_dict.setdefault(record.status, []).append(record)
