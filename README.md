@@ -34,9 +34,9 @@ pytest
 Go to http://127.0.0.1:8000/docs to consult the interactive documentation.
 
 ## Features
-The application allow the an user to check if a number is a valid South African mobile phone number, based on the 
+The application allows a user to check if a number is a valid South African mobile phone number, based on the 
 following assumptions:
-- a valid number must contains 11 digits; and
+- a valid number must contain 11 digits; and
 - a valid number must begin with 27.
 
 If a number contains 10 or 9 digits, the application will try to suggest a correction by adding the prefix 27, e.g. 
