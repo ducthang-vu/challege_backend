@@ -6,6 +6,7 @@
 python 3.8.1
 
 fastapi==0.61.0  
+mock~=4.0.2
 numpy==1.19.1  
 pandas==1.1.0  
 pydantic==1.6.1  
