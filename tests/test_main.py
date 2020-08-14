@@ -8,6 +8,7 @@ client = TestClient(app)
 
 
 def test_create_upload_correct_file():
+    """Test endpoint "/upload-file" (POST): returns 200 when uploaded file is correct"""
     file_path = Path(__file__).parent.parent / 'file_for_test_upload' / 'correct_file.csv'
     with open(file_path, 'rb') as file:
         file_object = file.read()
@@ -16,6 +17,7 @@ def test_create_upload_correct_file():
 
 
 def test_create_upload_correct_file_small():
+    """Test endpoint "/upload-file" (POST)"""
     file_path = Path(__file__).parent.parent / 'file_for_test_upload' / 'correct_file_small.csv'
     with open(file_path, 'rb') as file_csv:
         file_object = file_csv.read()
@@ -28,6 +30,7 @@ def test_create_upload_correct_file_small():
 
 
 def test_create_upload_wrong_file():
+    """Test endpoint "/upload-file" (POST): returns 422 when csv file is invalid"""
     file_path = Path(__file__).parent.parent / 'file_for_test_upload' / 'wrong_file_column_names.csv'
     with open(file_path, 'rb') as file:
         file_object = file.read()
