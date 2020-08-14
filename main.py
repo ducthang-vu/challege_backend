@@ -34,13 +34,14 @@ def form_post(request: Request, number: str = Form(...)):
 @app.post("/upload-file")
 async def create_upload_file(file: UploadFile = File(...)):
     """Endpoint for uploading files. Returns json."""
-    chunks = pd.read_csv(file.file, chunksize=100000)
+    chunks = pd.read_csv(file.file, chunksize=100000, dtype={'sms_phone': 'string'})
     dataframe = pd.concat(chunks)
     data_dict = {}
     storage = TemporaryFile('w+t')
     for _, row in dataframe.iterrows():
         try:
             record = MobileNumber(row['id'], row['sms_phone'])
+            print(str(row['sms_phone']))
         except KeyError:
             raise HTTPException(status_code=422, detail="File must have column lines: 'id' and 'sms_phone")
         storage.write(str(record))

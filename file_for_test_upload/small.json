@@ -1,0 +1,32 @@
+{
+  "filename": "file",
+  "content": {
+    "rejected": [
+      {
+        "id_": 103426540,
+        "number": "84528784843",
+        "status": "rejected",
+        "suggested_correction": null,
+        "annotation": "Rejection: the number prefix is not 27."
+      }
+    ],
+    "accepted": [
+      {
+        "id_": 103427099,
+        "number": "27630364521",
+        "status": "accepted",
+        "suggested_correction": null,
+        "annotation": null
+      }
+    ],
+    "corrected": [
+      {
+        "id_": 103426574,
+        "number": "717234223",
+        "status": "corrected",
+        "suggested_correction": "27717234223",
+        "annotation": "Correction: missing 27 prefix"
+      }
+    ]
+  }
+}
