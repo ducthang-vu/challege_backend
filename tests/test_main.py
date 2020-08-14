@@ -23,15 +23,15 @@ def test_create_upload_wrong_file():
 
 
 def test_send_form_check_number():
-    response = client.get("/check-number/form")
+    response = client.get("/")
     assert response.status_code == 200
 
 
 def test_send_form_post_with_number():
-    response = client.post("/check-number/form", data={'number': '123456'})
+    response = client.post("/", data={'number': '123456'})
     assert response.status_code == 200
 
 
 def test_send_form_post_missing_number():
-    response = client.post("/check-number/form", data={'number': None})
+    response = client.post("/", data={'number': None})
     assert response.status_code == 422
