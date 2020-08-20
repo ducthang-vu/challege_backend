@@ -19,7 +19,7 @@ starlette==0.13.6
 Open terminal and install the necessary packages by running:
 
 ```
-pip install
+pip install -r requirements.txt
 ```
 
 Then start the application by running:
