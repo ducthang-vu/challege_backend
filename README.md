@@ -89,7 +89,7 @@ For the implementation, the following assumption has been made:
 - the application will reject a csv file without columns name 'id' and 'sms_phone' number.
 
 The parsing of the csv file is done with **pandas** library. For the purpose of this application the standard csv module
-might has been sufficient; however it is somehow awkward to work with uploaded files by using this module.
+might have been sufficient; however it is somehow awkward to work with while dealing iwth uploaded files.
 
 As required by the assignment, a temporary file is created by [main.py](main.py) during the execution of the 
 application.
